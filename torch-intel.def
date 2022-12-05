@@ -1,0 +1,15 @@
+Bootstrap: docker
+From: bitnami/pytorch-intel:latest
+
+%environment
+      export LANG=C.UTF-8 LC_ALL=C.UTF-8
+      export XDG_RUNTIME_DIR=/tmp/.run_$(uuidgen)
+
+%post
+      apt-get -y update
+      apt-get -y install wget uuid-runtime  
+      apt-get -y clean
+
+%runscript
+      python -c  "print(‘Welcome to ALVIS.’)"
+      pip list
